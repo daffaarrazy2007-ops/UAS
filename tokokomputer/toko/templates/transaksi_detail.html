@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Detail Transaksi</h3>
+
+<p>
+<b>Tanggal:</b> {{ transaksi.tanggal|date:"d F Y H:i" }}<br>
+<b>Total:</b> Rp {{ transaksi.total }}
+</p>
+
+<table class="table table-bordered">
+<tr>
+<th>Produk</th><th>Jumlah</th><th>Subtotal</th>
+</tr>
+{% for d in detail %}
+<tr>
+<td>{{ d.produk.nama }}</td>
+<td>{{ d.jumlah }}</td>
+<td>Rp {{ d.subtotal }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/transaksi/" class="btn btn-primary">Transaksi Baru</a>
+{% endblock %}
