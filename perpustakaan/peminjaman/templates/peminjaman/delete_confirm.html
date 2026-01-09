@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Konfirmasi Hapus</title>
+    <style>
+        body { font-family: sans-serif; margin: 50px; }
+        .card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 500px; }
+        .btn { padding: 10px 15px; text-decoration: none; border-radius: 5px; cursor: pointer; border: none; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Konfirmasi Hapus Data</h2>
+        
+        <p>Apakah Anda yakin ingin menghapus data peminjaman: <strong>{{ obj }}</strong>?</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <button type="submit" class="btn btn-danger">Ya, Hapus Sekarang</button>
+            
+            <a href="{% url 'index' %}" class="btn btn-secondary">Batal</a>
+        </form>
+    </div>
+
+</body>
+</html>

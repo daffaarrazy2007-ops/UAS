@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Peminjaman</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .btn { padding: 8px 12px; text-decoration: none; border-radius: 4px; color: white; }
+        .btn-tambah { background-color: #28a745; }
+        .btn-edit { background-color: #ffc107; color: black; }
+        .btn-hapus { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>Daftar Peminjaman Buku</h1>
+    <a href="{% url 'create' %}" class="btn btn-tambah">+ Tambah Peminjam</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Peminjam</th>
+                <th>Judul Buku</th>
+                <th>Pengarang</th>
+                <th>Tgl Pinjam</th>
+                <th>Tgl Kembali</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in data %}
+            <tr>
+                <td>{{ d.nama_peminjam }}</td>
+                <td>{{ d.judul_buku }}</td>
+                <td>{{ d.pengarang }}</td>
+                <td>{{ d.tanggal_pinjam }}</td>
+                <td>{{ d.tanggal_kembali }}</td>
+                <td>{{ d.status }}</td>
+                <td>
+                    <a href="{% url 'update' d.id %}" class="btn btn-edit">Edit</a>
+                    <a href="{% url 'delete' d.id %}" class="btn btn-hapus">Hapus</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" style="text-align: center;">Belum ada data peminjaman.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
