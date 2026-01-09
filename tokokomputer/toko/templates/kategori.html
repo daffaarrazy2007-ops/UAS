@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Kategori</h3>
+<a href="/kategori/tambah/" class="btn btn-primary">Tambah</a>
+<ul>
+{% for k in data %}
+<li>{{ k.nama }} <a href="/kategori/hapus/{{ k.id }}/">Hapus</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
